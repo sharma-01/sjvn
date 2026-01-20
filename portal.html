@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SJVN Web Portals</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- SAME CSS FILE -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== SAME HEADER ===== -->
+<header class="header">
+  <div class="logo">
+    <a href="home.html">
+      <img src="picture/images (1).png" alt="SJVN Logo">
+    </a>
+  </div>
+<!-- ===== Calendar Button Under Logo ===== -->
+<div class="calendar-button-wrapper">
+  <a href="restrict.html" target="_blank" class="calendar-button">
+    <i class="fa-solid fa-calendar-days"></i> 
+  </a>
+</div>
+  <div class="datetime" id="datetime"></div>
+
+  <nav class="nav" id="nav">
+    <div class="dropdown">
+      <a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a>
+      <div class="dropdown-content">
+        <a href="about.html#overview">Company Overview</a>
+        <a href="about.html#history">History</a>
+        <a href="about.html#vision">Vision & Mission</a>
+        <a href="about.html#leadership">Leadership</a>
+        <a href="about.html#csr">CSR / Sustainability</a>
+        <a href="about.html#awards">Awards</a>
+      </div>
+    </div>
+    <!-- <a href="erp.html"><i class="fa-solid fa-gears"></i> ERP</a> -->
+     <a href="pdf.html" target="_blank">
+  <i class="fa-solid fa-book"></i> User Manuals
+</a>
+    <a href="portal.html"><i class="fa-solid fa-diagram-project"></i> Web Portals</a>
+    <a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
+    <a href="https://portal.sjvn.co.in:44300/irj/portal" class="ess-login">
+  <i class="fa-solid fa-right-to-bracket"></i> Login to ESS
+</a>
+  </nav>
+
+  <div class="menu-icon" id="menuBtn">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+</header>
+
+<!-- ===== PORTAL CONTENT ===== -->
+<section class="portal-section">
+
+ <!-- ===== DASHBOARD GROUP 1 ===== -->
+<div class="dashboard-box">
+  <h2><i class="fa-solid fa-chart-column"></i> BI Dashboard</h2>
+
+  <ul class="dashboard-list">
+    <li>
+      <a href="http://10.10.237.79:8080/BOE/BI">
+        <i class="fa-solid fa-bolt"></i> Power Generation Analytics
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- ===== DASHBOARD GROUP 2 ===== -->
+<div class="dashboard-box">
+  <h2><i class="fa-solid fa-briefcase"></i> Management SAC Dashboard</h2>
+
+  <ul class="dashboard-list">
+    <li>
+      <a href="https://sjvn.ap10.hcs.cloud.sap">
+        <i class="fa-solid fa-users-gear"></i> Human Resources Overview
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- ===== DASHBOARD GROUP 3 ===== -->
+<div class="dashboard-box">
+  <h2><i class="fa-solid fa-id-card"></i> Gate Pass Application</h2>
+
+  <ul class="dashboard-list">
+    <li>
+      <a href="https://gatepass.sjvn.co.in">
+        <i class="fa-solid fa-door-open"></i> Employee Gate Pass Requests
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- ===== DASHBOARD GROUP 4 ===== -->
+<div class="dashboard-box">
+  <h2><i class="fa-solid fa-user-xmark"></i> Ex-Employee Application</h2>
+
+  <ul class="dashboard-list">
+    <li>
+      <a href="https://connect.sjvn.co.in">
+        <i class="fa-solid fa-file-circle-check"></i> Ex-Employee Records
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- ===== DASHBOARD GROUP 5 ===== -->
+<div class="dashboard-box">
+  <h2><i class="fa-solid fa-user-check"></i> Employee Self Service</h2>
+
+  <ul class="dashboard-list">
+    <li>
+      <a href="https://portal.sjvn.co.in:44300/irj/portal">
+        <i class="fa-solid fa-hand-holding-heart"></i> Employee Self-Service Portal
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+
+</section>
+<footer class="footer-min">
+  <div class="footer-min-content">
+    <span><b>© 2026 SJVN Limited. All Rights Reserved.</b></span>
+    <!-- <span class="footer-divider">|</span>
+    <span>ERP & IT Applications Division</span>
+    <span class="footer-divider">|</span>
+    <span>Last Updated: Jan 2026</span> -->
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

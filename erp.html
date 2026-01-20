@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SJVN ERP</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <div class="logo">
+    <a href="home.html">
+      <img src="picture/images (1).png" alt="SJVN Logo">
+    </a>
+  </div>
+<!-- ===== Calendar Button Under Logo ===== -->
+<div class="calendar-button-wrapper">
+  <a href="restrict.html" target="_blank" class="calendar-button">
+    <i class="fa-solid fa-calendar-days"></i> 
+  </a>
+</div>
+  <div class="datetime" id="datetime"></div>
+  <nav class="nav" id="nav">
+    <div class="dropdown">
+      <a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a>
+      <div class="dropdown-content">
+        <a href="about.html#overview">Company Overview</a>
+        <a href="about.html#history">History</a>
+        <a href="about.html#vision">Vision & Mission</a>
+        <a href="about.html#leadership">Leadership</a>
+        <a href="about.html#csr">CSR / Sustainability</a>
+        <a href="about.html#awards">Awards</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#erp"><i class="fa-solid fa-gears"></i> ERP</a>
+      <div class="dropdown-content">
+        <a href="#erp-overview">Overview</a>
+        <a href="#erp-module1">Finance</a>
+        <a href="#erp-module2">HR</a>
+        <a href="#erp-module3">Inventory</a>
+      </div>
+    </div>
+    <a href="pdf.html"><i class="fa-solid fa-diagram-project"></i> Web Portals</a>
+   
+    <a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
+    <a href="https://portal.sjvn.co.in:44300/irj/portal" class="ess-login">
+  <i class="fa-solid fa-right-to-bracket"></i> Login to ESS
+</a>
+  </nav>
+  <div class="menu-icon" id="menuBtn"><i class="fa-solid fa-bars"></i></div>
+</header>
+
+<!-- ===== ERP Section ===== -->
+<section id="erp" class="erp-section">
+
+  <!-- ERP Overview -->
+  <div id="erp-overview" class="erp-overview">
+    <div class="overview-image">
+      <img src="picture/1530183503615.jpg" alt="ERP Overview" />
+    </div>
+    <div class="overview-text">
+      <h2>ERP Overview</h2>
+      <p>SJVN's ERP integrates Finance, Human Resources, and Inventory Management, streamlining operations, improving data accuracy, and enabling efficient decision-making across all departments.</p>
+    </div>
+  </div>
+
+  <!-- ERP Modules Grid -->
+  <div class="erp-modules-grid">
+
+    <!-- Finance Module -->
+    <div id="erp-module1" class="erp-module-card">
+      <div class="module-header">Finance</div>
+      <img src="picture/images.png" alt="Finance Module" />
+      <div class="module-content">
+        <h4><i class="fa-solid fa-money-bill-wave"></i> Finance Module Overview</h4>
+        <img src="picture/images.png" alt="Finance Image" class="module-inner-img"/>
+        <p>Manages financial operations, budgeting, accounting, and reporting. Supports compliance and financial decisions.</p>
+        <h5>Features:</h5>
+        <ul>
+          <li>Budget planning and allocation</li>
+          <li>Financial reporting and compliance</li>
+          <li>Accounts payable & receivable</li>
+          <li>Expense tracking & forecasting</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- HR Module -->
+    <div id="erp-module2" class="erp-module-card">
+      <div class="module-header">HR</div>
+      <img src="picture/images (3).jpg" alt="HR Module" />
+      <div class="module-content">
+        <h4><i class="fa-solid fa-user"></i> HR Module Overview</h4>
+        <img src="picture/images (3).jpg" alt="HR Image" class="module-inner-img"/>
+        <p>Automates employee management, payroll, recruitment, and performance tracking.</p>
+        <h5>Features:</h5>
+        <ul>
+          <li>Employee database management</li>
+          <li>Payroll and benefits administration</li>
+          <li>Recruitment workflow automation</li>
+          <li>Performance evaluation and appraisals</li>
+          <li>Training & development tracking</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Inventory Module -->
+    <div id="erp-module3" class="erp-module-card">
+      <div class="module-header">Inventory</div>
+      <img src="picture/images (4).jpg" alt="Inventory Module" />
+      <div class="module-content">
+        <h4><i class="fa-solid fa-warehouse"></i> Inventory Module Overview</h4>
+        <img src="picture/images (4).jpg" alt="Inventory Image" class="module-inner-img"/>
+        <p>Tracks stock levels, manages procurement, and monitors supply chains for smooth operations.</p>
+        <h5>Features:</h5>
+        <ul>
+          <li>Real-time stock monitoring</li>
+          <li>Procurement & supplier management</li>
+          <li>Warehouse and location tracking</li>
+          <li>Supply chain optimization</li>
+          <li>Automated reorder alerts</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+<footer class="footer-min">
+  <div class="footer-min-content">
+    <span><b>© 2026 SJVN Limited. All Rights Reserved.</b></span>
+    <!-- <span class="footer-divider">|</span>
+    <span>ERP & IT Applications Division</span>
+    <span class="footer-divider">|</span>
+    <span>Last Updated: Jan 2026</span> -->
+  </div>
+</footer>
+<!-- JS -->
+<script src="script.js"></script>
+</body>
+</html>

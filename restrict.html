@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SJVN Calendar 2026</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#eef3f9,#f9fbff);
+    padding:30px;
+}
+
+.wrapper{
+    max-width:1100px;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    color:#0b3c5d;
+    margin-bottom:30px;
+    font-size:30px;
+}
+
+/* ===== CALENDAR GRID ===== */
+.calendar{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+/* ===== MONTH CARD ===== */
+.month{
+    background:#fff;
+    border-radius:12px;
+    padding:14px;
+    border:2px solid #0b3c5d;
+    box-shadow:0 6px 15px rgba(0,0,0,0.12);
+}
+
+.month h2{
+    text-align:center;
+    color:#1f4e79;
+    margin-bottom:8px;
+    font-size:18px;
+    font-weight:700;
+    border-bottom:2px solid;
+    border-image:linear-gradient(to right,#0b3c5d,#3a7bd5) 1;
+    padding-bottom:5px;
+}
+
+/* ===== WEEKDAYS & DAYS ===== */
+.weekdays, .days{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    text-align:center;
+}
+
+.weekdays div{
+    font-size:12px;
+    font-weight:700;
+    color:#1f4e79;
+    padding:5px 0;
+}
+
+.days div{
+    padding:6px;
+    margin:2px;
+    border-radius:6px;
+    font-size:13px;
+    cursor:pointer;
+    min-height:38px;
+}
+
+/* ===== SUNDAY ===== */
+.sun{
+    color:#c00000;
+    font-weight:700;
+}
+
+/* ===== HOLIDAY BOX ===== */
+.holiday{
+    background:#8b0000;
+    color:#fff;
+    font-weight:700;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    line-height:1.2;
+}
+
+/* Holiday reason hidden by default */
+.holiday span{
+    display:none;
+    font-size:10px;
+    font-weight:500;
+    margin-top:3px;
+    text-align:center;
+}
+
+/* Show reason inside SAME box on hover */
+.holiday:hover span{
+    display:block;
+}
+
+/* ===== HOLIDAY LIST ===== */
+.holiday-list{
+    margin-top:45px;
+    background:#fff;
+    border:2px solid #0b3c5d;
+    border-radius:12px;
+    padding:20px;
+}
+
+.holiday-list h2{
+    text-align:center;
+    color:#0b3c5d;
+    margin-bottom:15px;
+}
+
+.holiday-list ul{
+    list-style:none;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.holiday-list li{
+    background:#f2f6fb;
+    padding:10px;
+    border-left:5px solid #8b0000;
+    border-radius:6px;
+    font-size:14px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:992px){
+    .calendar{
+        grid-template-columns:repeat(2,1fr);
+    }
+    .holiday-list ul{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+    .calendar{
+        grid-template-columns:1fr;
+    }
+    .holiday-list ul{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<h1>SJVN Calendar – 2026</h1>
+
+<div class="calendar" id="calendar"></div>
+
+<div class="holiday-list">
+  <h2>List of Holidays – 2026</h2>
+  <ul id="holidaySummary"></ul>
+</div>
+
+</div>
+
+<script>
+const year = 2026;
+
+const holidays = {
+    "2026-01-26":"Republic Day",
+    "2026-03-04":"Holi",
+    "2026-05-01":"Buddha Purnima",
+    "2026-05-27":"Id-Ul-Zuha (Bakrid)",
+    "2026-08-15":"Independence Day",
+    "2026-10-02":"Gandhi Jayanti",
+    "2026-10-20":"Dussehra",
+    "2026-11-24":"Guru Nanak Jayanti",
+    "2026-12-25":"Christmas Day"
+};
+
+const months = [
+"January","February","March","April","May","June",
+"July","August","September","October","November","December"
+];
+
+const calendar = document.getElementById("calendar");
+const holidaySummary = document.getElementById("holidaySummary");
+
+months.forEach((month, mIndex)=>{
+    const firstDay = new Date(year, mIndex, 1).getDay();
+    const daysInMonth = new Date(year, mIndex+1, 0).getDate();
+
+    let monthDiv = document.createElement("div");
+    monthDiv.className = "month";
+
+    let title = document.createElement("h2");
+    title.innerText = month + " " + year;
+    monthDiv.appendChild(title);
+
+    let weekdays = document.createElement("div");
+    weekdays.className="weekdays";
+    ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].forEach(d=>{
+        let div=document.createElement("div");
+        div.innerText=d;
+        weekdays.appendChild(div);
+    });
+    monthDiv.appendChild(weekdays);
+
+    let daysDiv = document.createElement("div");
+    daysDiv.className="days";
+
+    for(let i=0;i<firstDay;i++){
+        daysDiv.appendChild(document.createElement("div"));
+    }
+
+    for(let d=1; d<=daysInMonth; d++){
+        let dateDiv = document.createElement("div");
+        dateDiv.innerText=d;
+
+        let dateStr = `${year}-${String(mIndex+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        let day = new Date(year, mIndex, d).getDay();
+
+        if(day===0) dateDiv.classList.add("sun");
+
+        if(holidays[dateStr]){
+            dateDiv.classList.add("holiday");
+            let span=document.createElement("span");
+            span.innerText = holidays[dateStr];
+            dateDiv.appendChild(span);
+
+            let li=document.createElement("li");
+            li.innerText = `${d} ${month} – ${holidays[dateStr]}`;
+            holidaySummary.appendChild(li);
+        }
+
+        daysDiv.appendChild(dateDiv);
+    }
+
+    monthDiv.appendChild(daysDiv);
+    calendar.appendChild(monthDiv);
+});
+</script>
+
+</body>
+</html>
