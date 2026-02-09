@@ -11,24 +11,20 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<!-- MAIN SITE CSS -->
 <link rel="stylesheet" href="style.css">
 
 <style>
 /* ================= PDF PAGE LAYOUT ================= */
-
 .pdfs-section {
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 20px;
-
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* EXACT 3 PER ROW */
+  grid-template-columns: repeat(3, 1fr);
   gap: 25px;
 }
 
 /* ================= PDF BLOCK ================= */
-
 .pdf-box {
   border: 2px solid #003366;
   border-radius: 8px;
@@ -36,7 +32,6 @@
   text-align: center;
   background: #ffffff;
   min-height: 190px;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -56,7 +51,6 @@
 }
 
 /* ================= BUTTONS ================= */
-
 .btn-group {
   display: flex;
   justify-content: center;
@@ -71,14 +65,48 @@
   border-radius: 4px;
   text-decoration: none;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .pdf-btn:hover {
   background: #0055a5;
 }
 
-/* ================= RESPONSIVE ================= */
+.delete-btn {
+  background: #c82333;
+}
 
+.delete-btn:hover {
+  background: #a71d2a;
+}
+
+/* ================= UPLOAD BUTTON ================= */
+.upload-wrapper {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.upload-btn {
+  background: #28a745;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.upload-btn:hover {
+  background: #218838;
+}
+
+/* ================= RESPONSIVE ================= */
 @media(max-width: 992px) {
   .pdfs-section {
     grid-template-columns: repeat(2, 1fr);
@@ -95,109 +123,230 @@
 
 <body>
 
-<!-- ================= HEADER (UNCHANGED) ================= -->
-<!-- ===== HEADER ===== -->
+<!-- ================= HEADER ================= -->
 <header class="header">
   <div class="logo">
     <a href="home.html">
       <img src="picture/images (1).png" alt="SJVN Logo">
     </a>
   </div>
-<!-- ===== Calendar Button Under Logo ===== -->
-<div class="calendar-button-wrapper">
-  <a href="restrict.html" target="_blank" class="calendar-button">
-    <i class="fa-solid fa-calendar-days"></i> 
-  </a>
-</div>
+
+  <div class="calendar-button-wrapper">
+    <a href="calender.html" target="_blank" class="calendar-button">
+      <i class="fa-solid fa-calendar-days"></i> 
+    </a>
+  </div>
+
   <div class="datetime" id="datetime"></div>
 
   <nav class="nav" id="nav">
-    
-    <a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a>
-    <!-- <a href="erp.html"><i class="fa-solid fa-gears"></i> User Manuals</a> -->
-     <a href="pdf.html" target="_blank">
-  <i class="fa-solid fa-book"></i> User Manuals
-</a>
+    <a href="aboutt.html"><i class="fa-solid fa-circle-info"></i> About Us</a>
+    <a href="pdf.html" target="_blank"><i class="fa-solid fa-book"></i> User Manuals</a>
     <a href="portal.html"><i class="fa-solid fa-diagram-project"></i> Web portal</a>
     <a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
-     <!-- <a href="contact.html"><i class="fa-solid fa-user"></i> Login to ESS</a> -->
-      <a href="https://portal.sjvn.co.in:44300/irj/portal" class="ess-login">
-
-  <i class="fa-solid fa-right-to-bracket"></i> Login to ESS
-</a>
+    <a href="https://portal.sjvn.co.in:44300/irj/portal" class="ess-login"><i class="fa-solid fa-right-to-bracket"></i> Login to ESS</a>
   </nav>
 
   <div class="menu-icon" id="menuBtn">
     <i class="fa-solid fa-bars"></i>
   </div>
 </header>
-
-
 <!-- ================= PDF BLOCKS ================= -->
 <section class="pdfs-section">
 
+  <!-- Annual Report -->
   <div class="pdf-box">
-    <h3><i class="fa-solid fa-file-pdf"></i> Annual Report 2025-26</h3>
+    <h3>
+      <i class="fa-solid fa-file-pdf"></i>
+      Annual Report 2025-26
+    </h3>
     <p>Complete annual performance and financial report.</p>
     <div class="btn-group">
-      <a href="pdf/PPT SJVN 2.pptx" target="_blank" class="pdf-btn">Open</a>
-      <a href="pdf/PPT SJVN 2.pptx" download class="pdf-btn">Download</a>
+      <a href="pdf/PPT SJVN 2.pptx" target="_blank" class="pdf-btn">
+        <i class="fa-solid fa-eye"></i> Open
+      </a>
+      <!-- <a href="pdf/PPT SJVN 2.pptx" download class="pdf-btn">
+        <i class="fa-solid fa-download"></i> Download
+      </a> -->
+      <a href="pdf/PPT SJVN 2.pptx" class="pdf-btn delete-btn" onclick="deletePDF('PPT SJVN 2.pptx')">
+        <i class="fa-solid fa-trash"></i> Delete
+      </a>
     </div>
   </div>
 
+  <!-- ERP User Manual -->
   <div class="pdf-box">
-    <h3><i class="fa-solid fa-file-pdf"></i> ERP User Manual</h3>
+    <h3>
+      <i class="fa-solid fa-file-pdf"></i>
+      ERP User Manual
+    </h3>
     <p>User guide for ERP modules and workflows.</p>
     <div class="btn-group">
-      <a href="pdf/SJVN PPT 29112024 (1).pptx" target="_blank" class="pdf-btn">Open</a>
-      <a href="pdf/SJVN PPT 29112024 (1).pptx" download class="pdf-btn">Download</a>
+      <a href="pdf/SJVN PPT 29112024 (1).pptx" target="_blank" class="pdf-btn">
+        <i class="fa-solid fa-eye"></i> Open
+      </a>
+      <!-- <a href="pdf/SJVN PPT 29112024 (1).pptx" download class="pdf-btn">
+        <i class="fa-solid fa-download"></i> Download
+      </a> -->
+      <a href="#" class="pdf-btn delete-btn" onclick="deletePDF('SJVN PPT 29112024 (1).pptx')">
+        <i class="fa-solid fa-trash"></i> Delete
+      </a>
     </div>
   </div>
 
+  <!-- Safety Guidelines -->
   <div class="pdf-box">
-    <h3><i class="fa-solid fa-file-pdf"></i> Safety Guidelines</h3>
+    <h3>
+      <i class="fa-solid fa-file-pdf"></i>
+      Safety Guidelines
+    </h3>
     <p>Official safety procedures for operations.</p>
     <div class="btn-group">
-      <a href="pdfs/safety-guidelines-2025.pdf" target="_blank" class="pdf-btn">Open</a>
-      <a href="pdfs/safety-guidelines-2025.pdf" download class="pdf-btn">Download</a>
+      <a href="pdfs/safety-guidelines-2025.pdf" target="_blank" class="pdf-btn">
+        <i class="fa-solid fa-eye"></i> Open
+      </a>
+      <!-- <a href="pdfs/safety-guidelines-2025.pdf" download class="pdf-btn">
+        <i class="fa-solid fa-download"></i> Download
+      </a> -->
+      <a href="#" class="pdf-btn delete-btn" onclick="deletePDF('safety-guidelines-2025.pdf')">
+        <i class="fa-solid fa-trash"></i> Delete
+      </a>
     </div>
   </div>
 
+  <!-- Project Report -->
   <div class="pdf-box">
-    <h3><i class="fa-solid fa-file-pdf"></i> Project Report 2025</h3>
+    <h3>
+      <i class="fa-solid fa-file-pdf"></i>
+      Project Report 2025
+    </h3>
     <p>Status and progress of major projects.</p>
     <div class="btn-group">
-      <a href="pdfs/project-reports-2025.pdf" target="_blank" class="pdf-btn">Open</a>
-      <a href="pdfs/project-reports-2025.pdf" download class="pdf-btn">Download</a>
+      <a href="pdfs/project-reports-2025.pdf" target="_blank" class="pdf-btn">
+        <i class="fa-solid fa-eye"></i> Open
+      </a>
+      <!-- <a href="pdfs/project-reports-2025.pdf" download class="pdf-btn">
+        <i class="fa-solid fa-download"></i> Download
+      </a> -->
+      <a href="#" class="pdf-btn delete-btn" onclick="deletePDF('project-reports-2025.pdf')">
+        <i class="fa-solid fa-trash"></i> Delete
+      </a>
     </div>
   </div>
 
+  <!-- HR Policy -->
   <div class="pdf-box">
-    <h3><i class="fa-solid fa-file-pdf"></i> HR Policy</h3>
+    <h3>
+      <i class="fa-solid fa-file-pdf"></i>
+      HR Policy
+    </h3>
     <p>Employee rules, benefits and HR policies.</p>
     <div class="btn-group">
-      <a href="pdfs/hr-policy-2025.pdf" target="_blank" class="pdf-btn">Open</a>
-      <a href="pdfs/hr-policy-2025.pdf" download class="pdf-btn">Download</a>
+      <a href="pdfs/hr-policy-2025.pdf" target="_blank" class="pdf-btn">
+        <i class="fa-solid fa-eye"></i> Open
+      </a>
+      <!-- <a href="pdfs/hr-policy-2025.pdf" download class="pdf-btn">
+        <i class="fa-solid fa-download"></i> Download
+      </a> -->
+      <a href="#" class="pdf-btn delete-btn" onclick="deletePDF('hr-policy-2025.pdf')">
+        <i class="fa-solid fa-trash"></i> Delete
+      </a>
     </div>
   </div>
 
+  <!-- Audit Report -->
   <div class="pdf-box">
-    <h3><i class="fa-solid fa-file-pdf"></i> Audit Report</h3>
+    <h3>
+      <i class="fa-solid fa-file-pdf"></i>
+      Audit Report
+    </h3>
     <p>Internal and external audit observations.</p>
     <div class="btn-group">
-      <a href="pdfs/audit-report-2025.pdf" target="_blank" class="pdf-btn">Open</a>
-      <a href="pdfs/audit-report-2025.pdf" download class="pdf-btn">Download</a>
+      <a href="pdfs/audit-report-2025.pdf" target="_blank" class="pdf-btn">
+        <i class="fa-solid fa-eye"></i> Open
+      </a>
+      <!-- <a href="pdfs/audit-report-2025.pdf" download class="pdf-btn">
+        <i class="fa-solid fa-download"></i> Download
+      </a> -->
+      <a href="#" class="pdf-btn delete-btn" onclick="deletePDF('audit-report-2025.pdf')">
+        <i class="fa-solid fa-trash"></i> Delete
+      </a>
     </div>
   </div>
 
 </section>
 
-<!-- ================= FOOTER (UNCHANGED) ================= -->
+<!-- ================= UPLOAD BUTTON ================= -->
+<div class="upload-wrapper">
+  <label for="pdfUpload" class="upload-btn">
+    <i class="fa-solid fa-upload"></i> Upload PDF
+  </label>
+  <input type="file" id="pdfUpload" accept=".pdf,.ppt,.pptx" hidden>
+</div>
+
+<!-- ================= PDF BLOCKS ================= -->
+<section class="pdfs-section" id="pdfSection">
+
+  <!-- Existing boxes remain unchanged -->
+
+</section>
+
+<!-- ================= FOOTER ================= -->
 <footer class="footer-min">
   <div class="footer-min-content">
     <span><b>© 2026 SJVN Limited. All Rights Reserved.</b></span>
   </div>
 </footer>
+
+<script>
+/* ================= ROLE CHECK ================= */
+const userRole = "admin";
+if(userRole !== "admin") {
+  document.querySelector('.upload-wrapper').style.display = "none";
+}
+
+/* ================= UPLOAD & CREATE PDF BOX ================= */
+const pdfUpload = document.getElementById("pdfUpload");
+const pdfSection = document.getElementById("pdfSection");
+
+pdfUpload.addEventListener("change", function () {
+  const file = this.files[0];
+  if (!file) return;
+
+  const fileURL = URL.createObjectURL(file);
+
+  const pdfBox = document.createElement("div");
+  pdfBox.className = "pdf-box";
+
+  pdfBox.innerHTML = `
+    <h3><i class="fa-solid fa-file-pdf"></i> ${file.name}</h3>
+    <p>Uploaded document</p>
+    <div class="btn-group">
+      <a href="${fileURL}" target="_blank" class="pdf-btn">
+        <i class="fa-solid fa-eye"></i> Open
+      </a>
+      <a href="${fileURL}" download="${file.name}" class="pdf-btn">
+        <i class="fa-solid fa-download"></i> Download
+      </a>
+      <a href="#" class="pdf-btn delete-btn">
+        <i class="fa-solid fa-trash"></i> Delete
+      </a>
+    </div>
+  `;
+
+  // Delete functionality
+  pdfBox.querySelector(".delete-btn").addEventListener("click", function (e) {
+    e.preventDefault();
+    if (confirm("Are you sure you want to delete this file?")) {
+      pdfBox.remove();
+    }
+  });
+
+  pdfSection.appendChild(pdfBox);
+  pdfUpload.value = "";
+});
+
+</script>
 
 <script src="script.js"></script>
 </body>

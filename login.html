@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ERP Document Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Main CSS -->
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* ===== RESET ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI", sans-serif;
+}
+
+html, body{height:100%;}
+
+body{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  background:linear-gradient(135deg,#0b3c7a,#1e90ff);
+}
+
+/* ===== HEADER & FOOTER FIX ===== */
+.header,.footer-min{flex-shrink:0;}
+
+/* ===== LOGIN ===== */
+.login-wrapper{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.login-box{
+  max-width:380px;
+  width:100%;
+  background:#fff;
+  padding:40px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 25px 50px rgba(0,0,0,.35);
+}
+
+.login-box i{font-size:52px;color:#0b3c7a;}
+.login-box h2{margin:15px 0;}
+.login-box input{
+  width:100%;
+  padding:12px;
+  margin-top:15px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+.login-box button{
+  margin-top:20px;
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  background:#0b3c7a;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* ===== DASHBOARD ===== */
+.dashboard{
+  display:none;
+  flex:1;
+  background:#f1f4f9;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar{
+  width:260px;
+  background:#0b3c7a;
+  color:#fff;
+  padding:20px;
+  position:relative;
+}
+
+.sidebar h2{
+  text-align:center;
+  margin-bottom:20px;
+  font-size:18px;
+}
+
+.tree ul{list-style:none;}
+.tree li{
+  padding:10px;
+  cursor:pointer;
+  border-radius:6px;
+}
+.tree li:hover{background:rgba(255,255,255,.15);}
+.tree .child{
+  display:none;
+  margin-left:15px;
+  font-size:14px;
+}
+
+/* ===== MAIN ===== */
+.main{
+  flex:1;
+  padding:25px;
+}
+
+.section{
+  background:#fff;
+  padding:25px;
+  border-radius:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+.section h2{
+  color:#0b3c7a;
+  margin-bottom:15px;
+}
+
+/* ===== DOCUMENTS ===== */
+.doc-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.doc-card{
+  border:2px solid #d6deea;
+  border-top:6px solid #0b3c7a;
+  padding:20px;
+  border-radius:14px;
+  text-align:center;
+  transition:.3s;
+}
+
+.doc-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.doc-card i{
+  font-size:40px;
+  color:#0b3c7a;
+}
+
+.doc-card p{
+  margin:10px 0;
+  font-weight:500;
+}
+
+/* ===== DELETE BUTTON ===== */
+.del-btn{
+  margin-top:10px;
+  width:100%;
+  padding:8px;
+  border:none;
+  border-radius:6px;
+  background:#dc3545;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* ===== LOGOUT ===== */
+.logout{
+  position:absolute;
+  bottom:20px;
+  width:220px;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  background:#fff;
+  color:#0b3c7a;
+  cursor:pointer;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .dashboard{flex-direction:column;}
+  .sidebar{width:100%;}
+  .logout{
+    position:static;
+    width:100%;
+    margin-top:15px;
+  }
+}
+</style>
+</head>
+
+<body>
+<!-- ===== SAME HEADER ===== -->
+<header class="header">
+  <div class="logo">
+    <a href="home.html">
+      <img src="picture/images (1).png" alt="SJVN Logo">
+    </a>
+  </div>
+<!-- ===== Calendar Button Under Logo ===== -->
+<div class="calendar-button-wrapper">  
+  <a href="calender.html" target="_blank" class="calendar-button">
+    <i class="fa-solid fa-calendar-days"></i> 
+  </a>
+</div>
+  <div class="datetime" id="datetime"></div>
+
+  <nav class="nav" id="nav">
+    <div class="dropdown">
+      <a href="aboutt.html"><i class="fa-solid fa-circle-info"></i> About Us</a>
+      
+    </div>
+    <!-- <a href="erp.html"><i class="fa-solid fa-gears"></i> ERP</a> -->
+     <a href="pdf.html" target="_blank">
+  <i class="fa-solid fa-book"></i> User Manuals
+</a>
+    <a href="portal.html"><i class="fa-solid fa-diagram-project"></i> Web Portals</a>
+    <a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
+    <a href="https://portal.sjvn.co.in:44300/irj/portal" class="ess-login">
+  <i class="fa-solid fa-right-to-bracket"></i> Login to ESS
+</a>
+  </nav>
+
+  <div class="menu-icon" id="menuBtn">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+</header>
+<!-- ===== LOGIN ===== -->
+<div class="login-wrapper" id="loginPage">
+  <div class="login-box">
+    <i class="fa-solid fa-user-shield"></i>
+    <h2>ERP Secure Login</h2>
+    <input id="username" placeholder="Username">
+    <input id="password" type="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+  </div>
+</div>
+
+<!-- ===== DASHBOARD ===== -->
+<div class="dashboard" id="dashboard">
+  <div class="sidebar">
+    <h2 id="roleTitle"></h2>
+    <div class="tree" id="menu"></div>
+    <button class="logout" onclick="logout()">
+      <i class="fa-solid fa-right-from-bracket"></i> Logout
+    </button>
+  </div>
+
+  <div class="main">
+    <div class="section" id="content">
+      <h2>Welcome</h2>
+      <p>Select a department from sidebar.</p>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+/* ===== USERS ===== */
+const users={
+  superadmin:{pass:"super123",role:"super"},
+  hradmin:{pass:"hr123",role:"hr"},
+  finadmin:{pass:"fin123",role:"finance"}
+};
+
+/* ===== DEPARTMENTS ===== */
+const departments={
+  HR:["Functional Documents","Technical Documents"],
+  Finance:["Functional Documents","Technical Documents"],
+  Commercial:["Functional Documents","Technical Documents"],
+  PM:["Functional Documents","Technical Documents"],
+  PO:["Functional Documents","Technical Documents"],
+  ESS:["Functional Documents","Technical Documents"]
+};
+
+/* ===== DEPARTMENT PASSWORDS ===== */
+const departmentPasswords={
+  HR:"hr@2026",
+  Finance:"fin@2026"
+};
+
+let currentRole="";
+
+/* ===== LOGIN ===== */
+function login(){
+  if(users[username.value] && users[username.value].pass===password.value){
+    currentRole=users[username.value].role;
+    loginPage.style.display="none";
+    dashboard.style.display="flex";
+    document.body.style.background="#f1f4f9";
+    roleTitle.innerText=currentRole.toUpperCase()+" PANEL";
+    loadMenu(); 
+  }else{
+    alert("Invalid Login");
+  }
+} 
+    
+/* ===== MENU LOAD ===== */
+function loadMenu(){   
+  let html="<ul>";
+  for(let d in departments){
+    if(currentRole==="super" || d.toLowerCase()===currentRole){
+      html+=`
+      <li onclick="toggle(this)">
+        <i class="fa-solid fa-folder"></i> ${d}
+        <ul class="child">
+          ${departments[d].map(x=>`
+            <li onclick="showDocs('${d}','${x}')">
+              <i class="fa-solid fa-file"></i> ${x}
+            </li>`).join("")}
+        </ul>
+      </li>`;
+    }
+  }
+  html+="</ul>";
+  menu.innerHTML=html;
+}
+
+/* ===== TOGGLE ===== */
+function toggle(el){
+  let c=el.querySelector(".child");
+  if(c) c.style.display=c.style.display==="block"?"none":"block";
+}
+
+/* ===== SHOW DOCUMENTS ===== */
+function showDocs(dep,type){
+  if(departmentPasswords[dep]){ 
+    let p=prompt("Enter "+dep+" Department Password");
+    if(p!==departmentPasswords[dep]){
+      alert("Access Denied");
+      return;
+    }
+  }
+
+  content.innerHTML=`
+    <h2>${dep} - ${type}</h2>
+    <div class="doc-grid">
+      ${[1,2,3].map(i=>`
+        <div class="doc-card" id="doc-${dep}-${type}-${i}">
+          <i class="fa-solid fa-file-pdf"></i>
+          <p>${dep} ${type} Document ${i}</p>
+          ${
+            currentRole==="super"
+            ? `<button class="del-btn" onclick="deleteDoc('doc-${dep}-${type}-${i}')">
+                <i class="fa-solid fa-trash"></i> Delete
+              </button>`
+            : ``
+          }
+        </div>
+      `).join("")}
+    </div>`;
+}
+
+/* ===== DELETE ===== */
+function deleteDoc(id){ 
+  if(confirm("Are you sure you want to delete this document?")){
+    document.getElementById(id).remove();
+  }
+}
+
+/* ===== LOGOUT ===== */
+function logout(){ 
+  dashboard.style.display="none";
+  loginPage.style.display="flex";
+  document.body.style.background="linear-gradient(135deg,#0b3c7a,#1e90ff)";
+}
+</script>
+<!-- ===== FOOTER ===== -->
+<footer class="footer-min">
+  <div class="footer-min-content">
+    <span><b>© 2026 SJVN Limited. All Rights Reserved.</b></span> 
+  </div>
+</footer> 
+
+<script src="script.js"></script> 
+</body>
+</html> 
